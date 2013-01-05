@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestDiscovery_client", "TestDiscovery_client.vcxproj", "{FC2708C3-4583-3D13-B3B4-97E73211A3CA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestQtrpc2", "..\TestQtrpc2\TestQtrpc2.vcxproj", "{7A4D50B6-8141-37AC-88B6-39731420627C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qtrpc2", "..\qtrpc2.vcxproj", "{039B806C-2F59-3A59-96BF-9D5C935B2924}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC2708C3-4583-3D13-B3B4-97E73211A3CA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FC2708C3-4583-3D13-B3B4-97E73211A3CA}.Debug|Win32.Build.0 = Debug|Win32
+		{FC2708C3-4583-3D13-B3B4-97E73211A3CA}.Release|Win32.ActiveCfg = Release|Win32
+		{FC2708C3-4583-3D13-B3B4-97E73211A3CA}.Release|Win32.Build.0 = Release|Win32
+		{7A4D50B6-8141-37AC-88B6-39731420627C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7A4D50B6-8141-37AC-88B6-39731420627C}.Debug|Win32.Build.0 = Debug|Win32
+		{7A4D50B6-8141-37AC-88B6-39731420627C}.Release|Win32.ActiveCfg = Release|Win32
+		{7A4D50B6-8141-37AC-88B6-39731420627C}.Release|Win32.Build.0 = Release|Win32
+		{039B806C-2F59-3A59-96BF-9D5C935B2924}.Debug|Win32.ActiveCfg = Debug|Win32
+		{039B806C-2F59-3A59-96BF-9D5C935B2924}.Debug|Win32.Build.0 = Debug|Win32
+		{039B806C-2F59-3A59-96BF-9D5C935B2924}.Release|Win32.ActiveCfg = Release|Win32
+		{039B806C-2F59-3A59-96BF-9D5C935B2924}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

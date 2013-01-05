@@ -110,7 +110,7 @@ void QxtServiceBrowser::browse(/* int iface */)
         typedef DNSServiceErrorType (*Fun)(DNSServiceRef *,DNSServiceFlags,unsigned int,const char *,const char *,DNSServiceBrowseReply, void*);
         Fun test = (Fun)lib->resolve("DNSServiceBrowse");
 
-
+        //qDebug() << "qxt-d service:" << qxt_d().service->sockfd << " op:" << qxt_d().service->op;
         if (test)
         {
             qDebug() << "DNSServiceBrowse";
@@ -121,9 +121,11 @@ void QxtServiceBrowser::browse(/* int iface */)
                                    qPrintable(domain()),
                                    QxtServiceBrowserPrivate::browseServiceCallback,
                                    &qxt_d());
+
+            qDebug() << "err:" << err;
         }
 
-        lib->unload();
+        //lib->unload();
 
 //	err = DNSServiceBrowse(&(qxt_d().service),
 //	                       0,
@@ -140,25 +142,31 @@ void QxtServiceBrowser::browse(/* int iface */)
 	else
         {
 
-            QLibrary *lib = new QLibrary("dnssd");
-            lib->load();
-            if (lib->isLoaded())
-            {
-                qDebug() << "load success DNSServiceRefSockFD";
-            }
-            else
-            {
-                qDebug() << "load failed";
-            }
+//            QLibrary *lib = new QLibrary("dnssd");
+//            lib->load();
+//            if (lib->isLoaded())
+//            {
+//                qDebug() << "load success DNSServiceRefSockFD";
+//            }
+//            else
+//            {
+//                qDebug() << "load failed";
+//            }
 
             typedef int (*Fun)(DNSServiceRef);
-            Fun test = (Fun)lib->resolve("DNSServiceRefSockFD");
+            Fun test1 = (Fun)lib->resolve("DNSServiceRefSockFD");
 
-            qxt_d().service = new _DNSServiceRef_t;
-            //qDebug() << "qxd_fd" << qxt_d().service->sockfd;
-            if (test)
+
+            qDebug() << "address:" << qxt_d().service;
+            qDebug() << "qxd_fd" << qxt_d().service->sockfd << " op" << qxt_d().service->op;
+
+            qDebug() << "testxxx";
+            if (test1)
             {
-                qxt_d().notifier = new QSocketNotifier(test(qxt_d().service), QSocketNotifier::Read, this);
+                qDebug() << "before";
+                int socket = test1(qxt_d().service);
+                qDebug() << "after";
+                qxt_d().notifier = new QSocketNotifier(socket, QSocketNotifier::Read, this);
                 QObject::connect(qxt_d().notifier, SIGNAL(activated(int)), &qxt_d(), SLOT(socketData()));
             }
             //DNSServiceProcessResult(service);
@@ -178,7 +186,7 @@ void QxtServiceBrowser::stopBrowsing()
             lib->load();
             if (lib->isLoaded())
             {
-                qDebug() << "load success";
+                qDebug() << "load success stopBrowsing";
             }
             else
             {
@@ -239,7 +247,7 @@ void QxtServiceBrowserPrivate::socketData()
     lib->load();
     if (lib->isLoaded())
     {
-        qDebug() << "load success";
+        qDebug() << "load success QxtServiceBrowserPrivate::socketData";
     }
     else
     {
@@ -249,9 +257,12 @@ void QxtServiceBrowserPrivate::socketData()
     typedef DNSServiceErrorType (*Fun)(DNSServiceRef);
     Fun test = (Fun)lib->resolve("DNSServiceProcessResult");
 
+    qDebug() << "service:" << service->sockfd;
     if (test)
     {
+        qDebug() << "service";
         test(service);
+        qDebug() << "service1";
     }
 
     lib->unload();

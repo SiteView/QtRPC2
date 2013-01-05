@@ -177,7 +177,7 @@ QByteArray QxtDiscoverableServiceName::escapedFullDomainName() const
         lib->load();
         if (lib->isLoaded())
         {
-            qDebug() << "load success";
+            qDebug() << "load success escapedFullDomainName";
         }
         else
         {

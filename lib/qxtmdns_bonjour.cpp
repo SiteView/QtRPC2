@@ -98,7 +98,7 @@ void QxtMDNS::doLookup(QString n, QObject * r, const char * m)
             lib->load();
             if (lib->isLoaded())
             {
-                qDebug() << "load success";
+                qDebug() << "load success DNSServiceRefSockFD";
             }
             else
             {
@@ -137,7 +137,7 @@ void QxtMDNS::socketData()
     lib->load();
     if (lib->isLoaded())
     {
-        qDebug() << "load success";
+        qDebug() << "load success QxtMDNS::socketData";
     }
     else
     {

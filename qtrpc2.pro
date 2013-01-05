@@ -126,8 +126,8 @@ HEADERS += serverprotocollistenersocket_p.h \
 win32 { \
     SOURCES += lib/qxtmdns_bonjour.cpp
     HEADERS += lib/qxtmdns_bonjour.h
-    INCLUDEPATH += $$quote("C:/Program Files/Bonjour SDK/Include/")
-    #LIBS += -L./lib/x64 -ldnssd
+    #INCLUDEPATH += $$quote("C:/Program Files/Bonjour SDK/Include/")
+    LIBS += -L./lib/x641 -ldnssd
     #LIBS += $$quote(C:/rds/qtrpc2/dnssd.dll)
 }
 

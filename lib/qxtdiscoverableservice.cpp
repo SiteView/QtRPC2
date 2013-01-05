@@ -140,7 +140,7 @@ void QxtDiscoverableServicePrivate::socketData()
         lib->load();
         if (lib->isLoaded())
         {
-            qDebug() << "load success";
+            qDebug() << "load success socketData";
         }
         else
         {
@@ -377,6 +377,8 @@ void QxtDiscoverableService::registerService(bool noAutoRename)
                        "",
                        QxtDiscoverableServicePrivate::registerServiceCallback,
                        &qxt_d());
+
+            qDebug() << "err :" << err;
         }
         //DNSServiceProcessResult(service);
 
@@ -512,7 +514,7 @@ void QxtDiscoverableService::resolve(bool forceMulticast)
                 lib->load();
                 if (lib->isLoaded())
                 {
-                    qDebug() << "load success";
+                    qDebug() << "load success resolve DNSServiceRefSockFD";
                 }
                 else
                 {
@@ -555,7 +557,7 @@ void QxtDiscoverableService::releaseService()
                     lib->load();
                     if (lib->isLoaded())
                     {
-                        qDebug() << "load success";
+                        qDebug() << "load success DNSServiceRefDeallocate";
                     }
                     else
                     {
