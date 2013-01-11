@@ -114,15 +114,19 @@ void QxtServiceBrowser::browse(/* int iface */)
         if (test)
         {
             qDebug() << "DNSServiceBrowse";
+            const char            *regtype = qPrintable(subtypes.join(",_"));
+            const char *domain1 =  qPrintable(domain());
+//            const char *domain1 =  domain().toStdString().c_str();
+//            const char            *regtype = subtypes.join(",_").toStdString().c_str();
             err = test(&(qxt_d().service),
                                    0,
                                    qxt_d().iface,
-                                   qPrintable(subtypes.join(",_")),
-                                   qPrintable(domain()),
+                                   regtype,
+                                   domain1,
                                    QxtServiceBrowserPrivate::browseServiceCallback,
                                    &qxt_d());
 
-            qDebug() << "err:" << err;
+            //qDebug() << "err:" << err;
         }
 
         //lib->unload();
@@ -257,7 +261,7 @@ void QxtServiceBrowserPrivate::socketData()
     typedef DNSServiceErrorType (*Fun)(DNSServiceRef);
     Fun test = (Fun)lib->resolve("DNSServiceProcessResult");
 
-    qDebug() << "service:" << service->sockfd;
+    //qDebug() << "service:" << service->sockfd;
     if (test)
     {
         qDebug() << "service";
